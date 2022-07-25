@@ -69,8 +69,8 @@ class _HomepageState extends State<Homepage> {
                   color: Colors.grey[100],
                   child: Row(children: [
                     Container(
-                      width: 200,
-                      height: 150,
+                      width: 150,
+                      height: 200,
                       child: Image.asset(
                         'lib/assets/images/${entries[index]}.jpg',
                         fit: BoxFit.fill,
@@ -79,7 +79,10 @@ class _HomepageState extends State<Homepage> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
-                        child: Text('${rolesOrJobs[index]}'),
+                        child: Align(
+                          alignment: Alignment.topRight,
+                          child: Text('${rolesOrJobs[index]}'),
+                        ),
                       ),
                     )
                   ]),
