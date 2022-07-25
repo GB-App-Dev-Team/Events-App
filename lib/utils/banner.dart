@@ -21,7 +21,7 @@ class EventBanner extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
-                child: Text('to be filled...'),
+                child: const Text('to be filled...'),
               ),
             )
           ]),

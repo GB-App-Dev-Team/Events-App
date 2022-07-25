@@ -2,47 +2,67 @@ import 'package:events/constants.dart';
 import 'package:events/utils/banner.dart';
 import 'package:flutter/material.dart';
 
-class Homepage extends StatelessWidget {
+class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
 
   @override
+  State<Homepage> createState() => _HomepageState();
+}
+
+class _HomepageState extends State<Homepage> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: myAppBar,
-      backgroundColor: Colors.grey[350],
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 1),
-            Padding(
-              padding: const EdgeInsets.all(1.0),
-              child: TextField(
-                decoration: InputDecoration(
-                    prefixIcon: const Icon(Icons.search),
-                    hintText: 'Search',
-                    hintStyle: const TextStyle(
-                        fontFamily: 'Roboto', fontWeight: FontWeight.w100,),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(1))),
-              ),
-            ),
-            const SizedBox(height: 5),
-            Expanded(
-              child: ListView.builder(
-                itemCount: 6,
-                itemBuilder: (context, index) {
-                  return const EventBanner();
-                },
-              ),
-            ),
-          ],
+        appBar: AppBar(
+          elevation: 0.0,
+          backgroundColor: Colors.white,
+          title: const Text(
+            "Events",
+            style: TextStyle(color: Colors.black),
+          ),
+          centerTitle: true,
+          bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(kToolbarHeight),
+            child: Container(
+                padding: const EdgeInsets.all(2.0),
+                margin: const EdgeInsets.all(10.0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.grey[300],
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Material(
+                    color: Colors.grey[300],
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        const Icon(Icons.search, color: Colors.grey),
+                        Expanded(
+                          child: TextField(
+                            // textAlign: TextAlign.center,
+                            decoration: const InputDecoration.collapsed(
+                              hintText: ' Search',
+                              hintStyle: TextStyle(
+                                  fontFamily: 'Roboto',
+                                  fontWeight: FontWeight.w100,
+                                  color: Colors.black),
+                            ),
+                            onChanged: (value) {},
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                )),
+          ),
         ),
-      ),
-      bottomNavigationBar: myBottomBar,
-    );
+        body: ListView.builder(
+          itemCount: 6,
+          itemBuilder: (context, index) {
+            return const EventBanner();
+          },
+        ),
+        bottomNavigationBar: myBottomBar);
   }
 }
