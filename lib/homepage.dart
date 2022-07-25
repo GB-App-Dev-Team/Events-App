@@ -79,10 +79,12 @@ class _HomepageState extends State<Homepage> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
-                        child: Align(
-                          alignment: Alignment.topRight,
-                          child: Text('${rolesOrJobs[index]}'),
-                        ),
+                        child: Column(children: [
+                          Align(
+                            alignment: Alignment.topRight,
+                            child: Text('${rolesOrJobs[index]}'),
+                          )
+                        ]),
                       ),
                     )
                   ]),
