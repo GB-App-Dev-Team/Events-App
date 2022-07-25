@@ -1,8 +1,5 @@
 import 'package:events/constants.dart';
-
 import 'package:events/utils/categories.dart';
-
-
 import 'package:flutter/material.dart';
 
 class Homepage extends StatefulWidget {
@@ -24,13 +21,9 @@ class _HomepageState extends State<Homepage> {
             "Events",
             style: TextStyle(
                 color: Colors.black,
-
                 fontFamily: 'Poppins',
-               
-
                 fontSize: 16.0,
                 fontWeight: FontWeight.w500),
-
           ),
           centerTitle: true,
           bottom: PreferredSize(
@@ -57,12 +50,9 @@ class _HomepageState extends State<Homepage> {
                               hintText: ' Search',
                               hintStyle: TextStyle(
                                   fontFamily: 'Poppins',
-
                                   fontWeight: FontWeight.w100,
-                                  color: Colors.black),
-
-                                  fontSize: 13.0,
-
+                                  color: Colors.black,
+                                  fontSize: 13.0),
                             ),
                             onChanged: (value) {},
                           ),
@@ -73,13 +63,13 @@ class _HomepageState extends State<Homepage> {
                 )),
           ),
         ),
-
         body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: SizedBox(
-                height: 30,
+                height: 40,
                 child: ListView(scrollDirection: Axis.horizontal, children: [
                   Categories(
                     category: 'Ongoing',
@@ -101,114 +91,113 @@ class _HomepageState extends State<Homepage> {
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: 6,
+                itemCount: rolesOrJobs.length,
                 itemBuilder: (context, index) {
-                  return const EventBanner();
+                  return Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                    //padding: const EdgeInsets.all(8),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(7),
+                      child: Container(
+                        height: 150,
+                        color: Colors.grey[100],
+                        child: Row(children: [
+                          Container(
+                            width: 150,
+                            height: 200,
+                            child: Image.asset(
+                              'lib/assets/images/${entries[index]}.jpg',
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      rolesOrJobs[index],
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 6.0, horizontal: 4.0),
+                                      child: Text(entriesdes[index],
+                                          //textAlign: TextAlign.left,
+                                          style: TextStyle(
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.w100,
+                                            color:
+                                                Color.fromARGB(255, 86, 81, 81),
+                                          )),
+                                    ),
+                                    Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 5.0, horizontal: 4.0),
+                                        child: Container(
+                                          height: 30,
+                                          child: Row(children: [
+                                            Text(
+                                              timings[index],
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 80),
+                                              child: Container(
+                                                  width: 30,
+                                                  height: 30,
+                                                  alignment:
+                                                      Alignment.centerRight,
+                                                  child: Image.asset(
+                                                      'lib/assets/images/${pics[index]}')),
+                                            )
+                                          ]),
+                                        )),
+                                    Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 0, horizontal: 4),
+                                        child: Row(
+                                          children: [
+                                            TextButton(
+                                                onPressed: () {},
+                                                child: Text(
+                                                  "Details",
+                                                  style: TextStyle(
+                                                      color: Colors.deepPurple,
+                                                      fontWeight:
+                                                          FontWeight.w200),
+                                                )),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 55),
+                                              child: ElevatedButton(
+
+                                                  // ignore: prefer_const_constructors
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                          primary: Colors
+                                                              .deepPurple),
+                                                  onPressed: () {},
+                                                  child: Text("Register")),
+                                            )
+                                          ],
+                                        ))
+                                  ]),
+                            ),
+                          )
+                        ]),
+                      ),
+                    ),
+                  );
                 },
               ),
             ),
           ],
-
-        body: ListView.builder(
-          itemCount: rolesOrJobs.length,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-              //padding: const EdgeInsets.all(8),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(7),
-                child: Container(
-                  height: 150,
-                  color: Colors.grey[100],
-                  child: Row(children: [
-                    Container(
-                      width: 150,
-                      height: 200,
-                      child: Image.asset(
-                        'lib/assets/images/${entries[index]}.jpg',
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                rolesOrJobs[index],
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  fontSize: 18,
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 8.0, horizontal: 4.0),
-                                child: Text(entriesdes[index],
-                                    //textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.w100,
-                                      color: Color.fromARGB(255, 86, 81, 81),
-                                    )),
-                              ),
-                              Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 8.0, horizontal: 4.0),
-                                  child: Container(
-                                    height: 30,
-                                    child: Row(children: [
-                                      Text(
-                                        timings[index],
-                                      ),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 80),
-                                        child: Container(
-                                            width: 30,
-                                            height: 30,
-                                            alignment: Alignment.centerRight,
-                                            child: Image.asset(
-                                                'lib/assets/images/${pics[index]}')),
-                                      )
-                                    ]),
-                                  )),
-                              Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 4, horizontal: 4),
-                                  child: Row(
-                                    children: [
-                                      TextButton(
-                                          onPressed: () {},
-                                          child: Text(
-                                            "Details",
-                                            style: TextStyle(
-                                                color: Colors.deepPurple,
-                                                fontWeight: FontWeight.w200),
-                                          )),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 55),
-                                        child: ElevatedButton(
-
-                                            // ignore: prefer_const_constructors
-                                            style: ElevatedButton.styleFrom(
-                                                primary: Colors.deepPurple),
-                                            onPressed: () {},
-                                            child: Text("Register")),
-                                      )
-                                    ],
-                                  ))
-                            ]),
-                      ),
-                    )
-                  ]),
-                ),
-              ),
-            );
-          },
-
         ),
         bottomNavigationBar: myBottomBar);
   }
