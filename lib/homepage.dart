@@ -1,5 +1,4 @@
 import 'package:events/constants.dart';
-import 'package:events/utils/banner.dart';
 import 'package:flutter/material.dart';
 
 class Homepage extends StatefulWidget {
@@ -58,11 +57,48 @@ class _HomepageState extends State<Homepage> {
           ),
         ),
         body: ListView.builder(
-          itemCount: 6,
+          itemCount: rolesOrJobs.length,
           itemBuilder: (context, index) {
-            return const EventBanner();
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+              //padding: const EdgeInsets.all(8),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(7),
+                child: Container(
+                  height: 150,
+                  color: Colors.grey[100],
+                  child: Row(children: [
+                    Container(
+                      width: 150,
+                      height: 200,
+                      child: Image.asset(
+                        'lib/assets/images/${entries[index]}.jpg',
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        child: Align(
+                          alignment: Alignment.topRight,
+                          child: Text('${rolesOrJobs[index]}'),
+                        ),
+                      ),
+                    )
+                  ]),
+                ),
+              ),
+            );
           },
         ),
         bottomNavigationBar: myBottomBar);
   }
 }
+
+//list of images
+final List<String> entries = <String>['music', 'product', 'research'];
+final List<String> rolesOrJobs = <String>[
+  'Music',
+  'Product Design',
+  'Clinical Research'
+];
