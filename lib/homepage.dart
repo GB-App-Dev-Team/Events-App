@@ -1,4 +1,8 @@
 import 'package:events/constants.dart';
+
+import 'package:events/utils/categories.dart';
+
+
 import 'package:flutter/material.dart';
 
 class Homepage extends StatefulWidget {
@@ -20,8 +24,13 @@ class _HomepageState extends State<Homepage> {
             "Events",
             style: TextStyle(
                 color: Colors.black,
+
+                fontFamily: 'Poppins',
+               
+
                 fontSize: 16.0,
                 fontWeight: FontWeight.w500),
+
           ),
           centerTitle: true,
           bottom: PreferredSize(
@@ -48,9 +57,12 @@ class _HomepageState extends State<Homepage> {
                               hintText: ' Search',
                               hintStyle: TextStyle(
                                   fontFamily: 'Poppins',
+
+                                  fontWeight: FontWeight.w100,
+                                  color: Colors.black),
+
                                   fontSize: 13.0,
-                                  // fontWeight: FontWeight.w100,
-                                  color: Colors.black45),
+
                             ),
                             onChanged: (value) {},
                           ),
@@ -61,6 +73,42 @@ class _HomepageState extends State<Homepage> {
                 )),
           ),
         ),
+
+        body: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SizedBox(
+                height: 30,
+                child: ListView(scrollDirection: Axis.horizontal, children: [
+                  Categories(
+                    category: 'Ongoing',
+                  ),
+                  Categories(
+                    category: 'Upcoming',
+                  ),
+                  Categories(
+                    category: 'Registered',
+                  ),
+                  Categories(
+                    category: 'Attended',
+                  ),
+                  Categories(
+                    category: 'Finished',
+                  ),
+                ]),
+              ),
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: 6,
+                itemBuilder: (context, index) {
+                  return const EventBanner();
+                },
+              ),
+            ),
+          ],
+
         body: ListView.builder(
           itemCount: rolesOrJobs.length,
           itemBuilder: (context, index) {
@@ -95,6 +143,7 @@ class _HomepageState extends State<Homepage> {
               ),
             );
           },
+
         ),
         bottomNavigationBar: myBottomBar);
   }
