@@ -1,5 +1,6 @@
 import 'package:events/constants.dart';
 import 'package:events/utils/banner.dart';
+import 'package:events/utils/categories.dart';
 import 'package:flutter/material.dart';
 
 class Homepage extends StatefulWidget {
@@ -18,7 +19,10 @@ class _HomepageState extends State<Homepage> {
           backgroundColor: Colors.white,
           title: const Text(
             "Events",
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(
+                color: Colors.black,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.bold),
           ),
           centerTitle: true,
           bottom: PreferredSize(
@@ -44,7 +48,7 @@ class _HomepageState extends State<Homepage> {
                             decoration: const InputDecoration.collapsed(
                               hintText: ' Search',
                               hintStyle: TextStyle(
-                                  fontFamily: 'Roboto',
+                                  fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w100,
                                   color: Colors.black),
                             ),
@@ -57,11 +61,40 @@ class _HomepageState extends State<Homepage> {
                 )),
           ),
         ),
-        body: ListView.builder(
-          itemCount: 6,
-          itemBuilder: (context, index) {
-            return const EventBanner();
-          },
+        body: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SizedBox(
+                height: 30,
+                child: ListView(scrollDirection: Axis.horizontal, children: [
+                  Categories(
+                    category: 'Ongoing',
+                  ),
+                  Categories(
+                    category: 'Upcoming',
+                  ),
+                  Categories(
+                    category: 'Registered',
+                  ),
+                  Categories(
+                    category: 'Attended',
+                  ),
+                  Categories(
+                    category: 'Finished',
+                  ),
+                ]),
+              ),
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: 6,
+                itemBuilder: (context, index) {
+                  return const EventBanner();
+                },
+              ),
+            ),
+          ],
         ),
         bottomNavigationBar: myBottomBar);
   }
