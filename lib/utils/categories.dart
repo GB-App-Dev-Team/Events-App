@@ -11,8 +11,10 @@ class Categories extends StatelessWidget {
       children: [
         TextButton(
             onPressed: () {},
-            child: Text(category,
-                style: TextStyle(color: Colors.deepPurpleAccent))),
+            child: Text(
+              category,
+              style: const TextStyle(color: Colors.deepPurple),
+            )),
         const SizedBox(
           width: 20,
         ),
