@@ -13,21 +13,21 @@ class Homepage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
         child: Column(
-          mainAxisSize: MainAxisSize.max,
+          mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 5),
+            const SizedBox(height: 1),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(1.0),
               child: TextField(
                 decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.search),
                     hintText: 'Search',
                     hintStyle: const TextStyle(
-                        fontFamily: 'Poppins', fontWeight: FontWeight.w300),
+                        fontFamily: 'Roboto', fontWeight: FontWeight.w100,),
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(7))),
+                        borderRadius: BorderRadius.circular(1))),
               ),
             ),
             const SizedBox(height: 5),

@@ -6,9 +6,9 @@ var myAppBar = AppBar(
     style: TextStyle(
         color: Colors.black,
         fontWeight: FontWeight.bold,
-        fontFamily: 'Poppins'),
+        fontSize: 16,
+        fontFamily: 'Roboto'),
   ),
-  //backgroundColor: Colors.white,
   centerTitle: true,
   backgroundColor: Colors.grey[100],
   elevation: 0,
@@ -17,35 +17,37 @@ var myAppBar = AppBar(
 var myBottomBar = BottomNavigationBar(
   type: BottomNavigationBarType.fixed,
   unselectedItemColor: Colors.grey,
-  selectedItemColor: Colors.deepPurple,
-  selectedLabelStyle:
-      const TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.w300),
-  items: const <BottomNavigationBarItem>[
+  selectedItemColor: Colors.grey,
+  unselectedLabelStyle:
+      const TextStyle(fontFamily: 'Roboto', fontWeight: FontWeight.w500, fontSize: 10),
+  selectedLabelStyle: 
+      const TextStyle(fontFamily: 'Roboto', fontWeight: FontWeight.w500, fontSize: 10),
+  items: <BottomNavigationBarItem>[
     BottomNavigationBarItem(
       icon: Icon(
         Icons.home,
-        color: Colors.grey,
+        color: Colors.grey[600],
       ),
       label: 'Home',
     ),
     BottomNavigationBarItem(
       icon: Icon(
         Icons.play_circle,
-        color: Colors.grey,
+        color: Colors.deepPurple[400],
       ),
       label: 'Events',
     ),
     BottomNavigationBarItem(
       icon: Icon(
         Icons.bookmark,
-        color: Colors.grey,
+        color: Colors.grey[600],
       ),
       label: 'Saved',
     ),
     BottomNavigationBarItem(
       icon: Icon(
         Icons.person_pin,
-        color: Colors.grey,
+        color: Colors.grey[600],
       ),
       label: 'Profile',
     ),
