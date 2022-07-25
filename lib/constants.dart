@@ -11,17 +11,16 @@ var myAppBar = AppBar(
   ),
   centerTitle: true,
   backgroundColor: Colors.grey[100],
-  elevation: 0,
 );
 
 var myBottomBar = BottomNavigationBar(
   type: BottomNavigationBarType.fixed,
   unselectedItemColor: Colors.grey,
   selectedItemColor: Colors.grey,
-  unselectedLabelStyle:
-      const TextStyle(fontFamily: 'Roboto', fontWeight: FontWeight.w500, fontSize: 10),
-  selectedLabelStyle: 
-      const TextStyle(fontFamily: 'Roboto', fontWeight: FontWeight.w500, fontSize: 10),
+  unselectedLabelStyle: const TextStyle(
+      fontFamily: 'Roboto', fontWeight: FontWeight.w500, fontSize: 10),
+  selectedLabelStyle: const TextStyle(
+      fontFamily: 'Roboto', fontWeight: FontWeight.w500, fontSize: 10),
   items: <BottomNavigationBarItem>[
     BottomNavigationBarItem(
       icon: Icon(
