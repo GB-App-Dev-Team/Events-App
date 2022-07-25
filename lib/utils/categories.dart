@@ -9,7 +9,10 @@ class Categories extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        TextButton(onPressed: () {}, child: Text(category)),
+        TextButton(
+            onPressed: () {},
+            child: Text(category,
+                style: TextStyle(color: Colors.deepPurpleAccent))),
         const SizedBox(
           width: 20,
         ),
