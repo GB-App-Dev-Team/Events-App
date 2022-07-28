@@ -21,13 +21,13 @@ class _HomepageState extends State<Homepage> {
             "Events",
             style: TextStyle(
                 color: Colors.black,
-                fontFamily: 'Poppins',
-                fontSize: 16.0,
+                fontFamily: 'Roboto',
+                fontSize: 18.0,
                 fontWeight: FontWeight.w800),
           ),
           centerTitle: true,
           bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(30.0),
+            preferredSize: const Size.fromHeight(55.0),
             child: Container(
                 padding: const EdgeInsets.all(2.0),
                 margin: const EdgeInsets.all(10.0),
@@ -36,24 +36,29 @@ class _HomepageState extends State<Homepage> {
                   color: Colors.grey[300],
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(1.0),
+                  padding: const EdgeInsets.all(4.0),
                   child: Material(
                     color: Colors.grey[300],
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
-                        const Icon(Icons.search, color: Colors.grey),
+                        const Padding(
+                          padding: EdgeInsets.only(left: 5.0),
+                          child: Icon(Icons.search, color: Colors.grey),
+                        ),
                         Expanded(
                           child: TextField(
                             // textAlign: TextAlign.center,
-                            decoration: const InputDecoration.collapsed(
-                              hintText: ' Search',
-                              hintStyle: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontWeight: FontWeight.w100,
-                                  color: Colors.black,
-                                  fontSize: 13.0),
-                            ),
+                            decoration: const InputDecoration(
+                                border: InputBorder.none,
+                                hintText: ' Search',
+                                hintStyle: TextStyle(
+                                    fontFamily: 'Roboto',
+                                    fontWeight: FontWeight.normal,
+                                    color: Colors.grey,
+                                    fontSize: 16.0),
+                                isDense: true,
+                                contentPadding: EdgeInsets.all(10)),
                             onChanged: (value) {},
                           ),
                         ),
@@ -72,26 +77,26 @@ class _HomepageState extends State<Homepage> {
                     child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10.0),
                         child: ToggleSwitch(
-                          minWidth: 90.0,
-                          fontSize: 11,
-                          cornerRadius: 5.0,
-                          customWidths: [75, 75, 75, 75, 75],
-                          activeBgColors: [
-                            [Colors.deepPurple],
-                            [Colors.deepPurple],
-                            [Colors.deepPurple],
-                            [Colors.deepPurple],
-                            [Colors.deepPurple],
+                          minWidth: 120.0,
+                          fontSize: 14,
+                          cornerRadius: 7.0,
+                          customWidths: const [95, 95, 95, 95, 95],
+                          activeBgColors: const [
+                            [Color.fromARGB(255, 108, 99, 254)],
+                            [Color.fromARGB(255, 108, 99, 254)],
+                            [Color.fromARGB(255, 108, 99, 254)],
+                            [Color.fromARGB(255, 108, 99, 254)],
+                            [Color.fromARGB(255, 108, 99, 254)],
                           ],
                           activeFgColor: Colors.white,
                           inactiveBgColor: Colors.white,
                           inactiveFgColor: Colors.black,
                           //initialLabelIndex: 0,
                           //totalSwitches: 5,
-                          labels: [
-                            'Registered',
-                            'Upcoming',
+                          labels: const [
                             'Ongoing',
+                            'Upcoming',
+                            'Registered',
                             'Attended',
                             'Booked'
                           ],
@@ -100,6 +105,7 @@ class _HomepageState extends State<Homepage> {
                           //   TextStyle(fontSize: 11, fontWeight: FontWeight.w200)
                           // ],
                         )))),
+            const SizedBox(height: 10),
             Expanded(
               child: ListView.builder(
                 itemCount: rolesOrJobs.length,
@@ -112,6 +118,7 @@ class _HomepageState extends State<Homepage> {
                       borderRadius: BorderRadius.circular(7),
                       child: Container(
                         height: 150,
+                        width: MediaQuery.of(context).size.width,
                         color: Colors.grey[100],
                         child: Row(children: [
                           Container(
@@ -119,12 +126,13 @@ class _HomepageState extends State<Homepage> {
                             height: 200,
                             child: Image.asset(
                               'lib/assets/images/${entries[index]}.jpg',
-                              fit: BoxFit.fill,
+                              fit: BoxFit.cover,
                             ),
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Container(
+                              // width: MediaQuery.of(context).size.width,
                               child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -173,28 +181,46 @@ class _HomepageState extends State<Homepage> {
                                         padding: const EdgeInsets.symmetric(
                                             vertical: 0, horizontal: 4),
                                         child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
                                           children: [
                                             TextButton(
                                                 onPressed: () {},
                                                 child: Text(
                                                   "Details",
                                                   style: TextStyle(
-                                                      color: Colors.deepPurple,
+                                                      color: Colors.black,
+                                                      fontFamily: 'Roboto',
                                                       fontWeight:
-                                                          FontWeight.w200),
+                                                          FontWeight.w100),
                                                 )),
                                             Padding(
                                               padding: const EdgeInsets.only(
                                                   left: 55),
-                                              child: ElevatedButton(
+                                              child: SizedBox(
+                                                height: 24,
+                                                width: 80,
+                                                child: ElevatedButton(
 
-                                                  // ignore: prefer_const_constructors
-                                                  style:
-                                                      ElevatedButton.styleFrom(
-                                                          primary: Colors
-                                                              .deepPurple),
-                                                  onPressed: () {},
-                                                  child: Text("Register")),
+                                                    // ignore: prefer_const_constructors
+                                                    style: ElevatedButton
+                                                        .styleFrom(
+                                                      primary: Color.fromARGB(
+                                                          255, 108, 99, 254),
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          7)),
+                                                    ),
+                                                    onPressed: () {},
+                                                    child: Text(
+                                                      "Register",
+                                                      style: TextStyle(
+                                                          fontSize: 12),
+                                                    )),
+                                              ),
                                             )
                                           ],
                                         ))
