@@ -1,5 +1,4 @@
 import 'package:events/constants.dart';
-import 'package:events/utils/categories.dart';
 import 'package:flutter/material.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
