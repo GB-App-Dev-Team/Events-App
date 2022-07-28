@@ -84,7 +84,7 @@ class _HomepageState extends State<Homepage> {
                             [Colors.deepPurple],
                           ],
                           activeFgColor: Colors.white,
-                          inactiveBgColor: Colors.white,
+                          inactiveBgColor: Colors.white10,
                           inactiveFgColor: Colors.black,
                           //initialLabelIndex: 0,
                           //totalSwitches: 5,
@@ -112,7 +112,7 @@ class _HomepageState extends State<Homepage> {
                       borderRadius: BorderRadius.circular(7),
                       child: Container(
                         height: 150,
-                        color: Colors.grey[100],
+                        color: Colors.white,
                         child: Row(children: [
                           Container(
                             width: 150,
