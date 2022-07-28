@@ -1,6 +1,7 @@
 import 'package:events/constants.dart';
 import 'package:events/utils/categories.dart';
 import 'package:flutter/material.dart';
+import 'package:toggle_switch/toggle_switch.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -23,7 +24,7 @@ class _HomepageState extends State<Homepage> {
                 color: Colors.black,
                 fontFamily: 'Poppins',
                 fontSize: 16.0,
-                fontWeight: FontWeight.w500),
+                fontWeight: FontWeight.w800),
           ),
           centerTitle: true,
           bottom: PreferredSize(
@@ -66,29 +67,40 @@ class _HomepageState extends State<Homepage> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SizedBox(
-                height: 40,
-                child: ListView(scrollDirection: Axis.horizontal, children: [
-                  Categories(
-                    category: 'Ongoing',
-                  ),
-                  Categories(
-                    category: 'Upcoming',
-                  ),
-                  Categories(
-                    category: 'Registered',
-                  ),
-                  Categories(
-                    category: 'Attended',
-                  ),
-                  Categories(
-                    category: 'Finished',
-                  ),
-                ]),
-              ),
-            ),
+            SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Scrollbar(
+                    child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                        child: ToggleSwitch(
+                          minWidth: 90.0,
+                          fontSize: 11,
+                          cornerRadius: 5.0,
+                          customWidths: [75, 75, 75, 75, 75],
+                          activeBgColors: [
+                            [Colors.deepPurple],
+                            [Colors.deepPurple],
+                            [Colors.deepPurple],
+                            [Colors.deepPurple],
+                            [Colors.deepPurple],
+                          ],
+                          activeFgColor: Colors.white,
+                          inactiveBgColor: Colors.white,
+                          inactiveFgColor: Colors.black,
+                          //initialLabelIndex: 0,
+                          //totalSwitches: 5,
+                          labels: [
+                            'Registered',
+                            'Upcoming',
+                            'Ongoing',
+                            'Attended',
+                            'Booked'
+                          ],
+                          radiusStyle: true,
+                          // customTextStyles: [
+                          //   TextStyle(fontSize: 11, fontWeight: FontWeight.w200)
+                          // ],
+                        )))),
             Expanded(
               child: ListView.builder(
                 itemCount: rolesOrJobs.length,
@@ -225,3 +237,4 @@ final List<String> rolesOrJobs = <String>[
   'Product Design',
   'Clinical Research'
 ];
+final List<bool> _selections = List.generate(5, (_) => false);
