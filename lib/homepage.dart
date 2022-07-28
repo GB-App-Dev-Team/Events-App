@@ -75,8 +75,8 @@ class _HomepageState extends State<Homepage> {
                           minWidth: 90.0,
                           fontSize: 11,
                           cornerRadius: 5.0,
-                          customWidths: [75, 75, 75, 75, 75],
-                          activeBgColors: [
+                          customWidths: const [75, 75, 75, 75, 75],
+                          activeBgColors: const [
                             [Colors.deepPurple],
                             [Colors.deepPurple],
                             [Colors.deepPurple],
@@ -88,7 +88,7 @@ class _HomepageState extends State<Homepage> {
                           inactiveFgColor: Colors.black,
                           //initialLabelIndex: 0,
                           //totalSwitches: 5,
-                          labels: [
+                          labels: const [
                             'Registered',
                             'Upcoming',
                             'Ongoing',
@@ -114,7 +114,7 @@ class _HomepageState extends State<Homepage> {
                         height: 150,
                         color: Colors.white,
                         child: Row(children: [
-                          Container(
+                          SizedBox(
                             width: 150,
                             height: 200,
                             child: Image.asset(
@@ -124,82 +124,79 @@ class _HomepageState extends State<Homepage> {
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      rolesOrJobs[index],
-                                      textAlign: TextAlign.left,
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                      ),
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    rolesOrJobs[index],
+                                    textAlign: TextAlign.left,
+                                    style: const TextStyle(
+                                      fontSize: 18,
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 6.0, horizontal: 4.0),
-                                      child: Text(entriesdes[index],
-                                          //textAlign: TextAlign.left,
-                                          style: TextStyle(
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.w100,
-                                            color:
-                                                Color.fromARGB(255, 86, 81, 81),
-                                          )),
-                                    ),
-                                    Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 5.0, horizontal: 4.0),
-                                        child: Container(
-                                          height: 30,
-                                          child: Row(children: [
-                                            Text(
-                                              timings[index],
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 80),
-                                              child: Container(
-                                                  width: 30,
-                                                  height: 30,
-                                                  alignment:
-                                                      Alignment.centerRight,
-                                                  child: Image.asset(
-                                                      'lib/assets/images/${pics[index]}')),
-                                            )
-                                          ]),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 6.0, horizontal: 4.0),
+                                    child: Text(entriesdes[index],
+                                        //textAlign: TextAlign.left,
+                                        style: const TextStyle(
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.w100,
+                                          color:
+                                              Color.fromARGB(255, 86, 81, 81),
                                         )),
-                                    Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 0, horizontal: 4),
-                                        child: Row(
-                                          children: [
-                                            TextButton(
-                                                onPressed: () {},
-                                                child: Text(
-                                                  "Details",
-                                                  style: TextStyle(
-                                                      color: Colors.deepPurple,
-                                                      fontWeight:
-                                                          FontWeight.w200),
-                                                )),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 55),
-                                              child: ElevatedButton(
+                                  ),
+                                  Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 5.0, horizontal: 4.0),
+                                      child: SizedBox(
+                                        height: 30,
+                                        child: Row(children: [
+                                          Text(
+                                            timings[index],
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.only(left: 80),
+                                            child: Container(
+                                                width: 30,
+                                                height: 30,
+                                                alignment:
+                                                    Alignment.centerRight,
+                                                child: Image.asset(
+                                                    'lib/assets/images/${pics[index]}')),
+                                          )
+                                        ]),
+                                      )),
+                                  Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 0, horizontal: 4),
+                                      child: Row(
+                                        children: [
+                                          TextButton(
+                                              onPressed: () {},
+                                              child: const Text(
+                                                "Details",
+                                                style: TextStyle(
+                                                    color: Colors.deepPurple,
+                                                    fontWeight:
+                                                        FontWeight.w200),
+                                              )),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.only(left: 55),
+                                            child: ElevatedButton(
 
-                                                  // ignore: prefer_const_constructors
-                                                  style:
-                                                      ElevatedButton.styleFrom(
-                                                          primary: Colors
-                                                              .deepPurple),
-                                                  onPressed: () {},
-                                                  child: Text("Register")),
-                                            )
-                                          ],
-                                        ))
-                                  ]),
-                            ),
+                                                // ignore: prefer_const_constructors
+                                                style: ElevatedButton.styleFrom(
+                                                    backgroundColor:
+                                                        Colors.deepPurple),
+                                                onPressed: () {},
+                                                child: const Text("Register")),
+                                          )
+                                        ],
+                                      ))
+                                ]),
                           )
                         ]),
                       ),
@@ -236,4 +233,4 @@ final List<String> rolesOrJobs = <String>[
   'Product Design',
   'Clinical Research'
 ];
-final List<bool> _selections = List.generate(5, (_) => false);
+// final List<bool> _selections = List.generate(5, (_) => false);
