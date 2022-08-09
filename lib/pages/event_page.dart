@@ -10,8 +10,13 @@ class EventsPage extends StatefulWidget {
 }
 
 class _EventsPageState extends State<EventsPage> {
-  bool _isTapped = false;
   final titleStyle = const TextStyle(fontSize: 16, fontWeight: FontWeight.bold);
+  final subTitleStyle = const TextStyle(
+    fontSize: 12,
+    fontFamily: 'Roboto Thin',
+    color: Color.fromRGBO(66, 66, 66, 1),
+  );
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -25,30 +30,14 @@ class _EventsPageState extends State<EventsPage> {
                       minWidth: 120.0,
                       fontSize: 14,
                       cornerRadius: 7.0,
-                      customWidths: const [95, 95, 95, 95, 95, 95, 95],
-                      activeBgColors: const [
-                        [Colors.deepPurple],
-                        [Colors.deepPurple],
-                        [Colors.deepPurple],
-                        [Colors.deepPurple],
-                        [Colors.deepPurple],
-                        [Colors.deepPurple],
-                        [Colors.deepPurple],
-                      ],
+                      customWidths: _customWidhts,
+                      activeBgColors: _activebgcolors,
                       activeFgColor: Colors.white,
                       inactiveBgColor: Colors.white,
                       inactiveFgColor: Colors.black,
                       //initialLabelIndex: 0,
                       //totalSwitches: 5,
-                      labels: const [
-                        'All',
-                        'Ongoing',
-                        'Upcoming',
-                        'Viewed',
-                        'Registered',
-                        'Attended',
-                        'Booked'
-                      ],
+                      labels: _categories,
                       radiusStyle: true,
                       // customTextStyles: [
                       //   TextStyle(fontSize: 11, fontWeight: FontWeight.w200)
@@ -81,37 +70,45 @@ class _EventsPageState extends State<EventsPage> {
                                       child: Align(
                                         alignment: Alignment.topRight,
                                         child: Container(
-                                          height: 32,
-                                          width: 32,
+                                          height: 35,
+                                          width: 35,
                                           decoration: const BoxDecoration(
                                               color:
                                                   Color.fromARGB(95, 0, 0, 0),
                                               shape: BoxShape.circle),
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                right: 10.0),
+                                            child: IconButton(
+                                              icon: Icon(
+                                                _selections[index]
+                                                    ? Icons
+                                                        .favorite_border_sharp
+                                                    : Icons.favorite_sharp,
+                                                color: _selections[index]
+                                                    ? Colors.white
+                                                    : Colors.red,
+                                                size: 20,
+                                              ),
+                                              onPressed: () {
+                                                setState(() {
+                                                  _selections[index] =
+                                                      !_selections[index];
+                                                });
+                                              },
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(4.0),
-                                      child: Align(
-                                        alignment: Alignment.topRight,
-                                        child: IconButton(
-                                          icon: Icon(
-                                            _isTapped
-                                                ? Icons.favorite_border_sharp
-                                                : Icons.favorite_sharp,
-                                            color: _isTapped
-                                                ? Colors.white
-                                                : Colors.red,
-                                            size: 20,
-                                          ),
-                                          onPressed: () {
-                                            setState(() {
-                                              _isTapped = !_isTapped;
-                                            });
-                                          },
-                                        ),
-                                      ),
-                                    )
+                                    // Padding(
+                                    //   //padding 4.0 works crctly windows and chrome app, bruh
+                                    //   padding: const EdgeInsets.all(0.0),
+                                    //   child: Align(
+                                    //     alignment: Alignment.topRight,
+                                    //     child:
+                                    //   ),
+                                    // )
                                   ]),
                                 ),
                                 Padding(
@@ -126,7 +123,10 @@ class _EventsPageState extends State<EventsPage> {
                                           )),
                                       Align(
                                         alignment: Alignment.centerLeft,
-                                        child: Text("Star rating"),
+                                        child: Text(
+                                          "Star rating",
+                                          style: subTitleStyle,
+                                        ),
                                         // child: RatingBar.builder(
                                         //   initialRating: 3.5,
                                         //   allowHalfRating: true,
@@ -140,27 +140,59 @@ class _EventsPageState extends State<EventsPage> {
                                         //   onRatingUpdate: (value) {},
                                         // )
                                       ),
-                                      Divider(
-                                        color: Colors.grey,
-                                        thickness: 1,
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 7),
+                                        child: Divider(
+                                          color: Colors.grey,
+                                          thickness: 1,
+                                        ),
                                       ),
                                       Column(
                                         children: [
                                           Row(
                                               mainAxisAlignment:
-                                                  MainAxisAlignment.spaceAround,
+                                                  MainAxisAlignment.start,
                                               children: [
-                                                Text('Speaker'),
-                                                Text('Date'),
-                                                Text('Company'),
+                                                SizedBox(
+                                                    width: 145,
+                                                    child: Text('Speaker')),
+                                                SizedBox(
+                                                    width: 95,
+                                                    child: Text('Date')),
+                                                SizedBox(
+                                                    width: 95,
+                                                    child: Text('Company')),
                                               ]),
+                                          SizedBox(height: 9),
                                           Row(
                                               mainAxisAlignment:
-                                                  MainAxisAlignment.spaceAround,
+                                                  MainAxisAlignment.start,
                                               children: [
-                                                Text('Speaker $index'),
-                                                Text('Date $index'),
-                                                Text('Company $index'),
+                                                SizedBox(
+                                                  width: 145,
+                                                  child: Text(
+                                                    speakers[index],
+                                                    style: subTitleStyle,
+                                                    textAlign: TextAlign.left,
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: 95,
+                                                  child: Text(
+                                                    dates[index],
+                                                    style: subTitleStyle,
+                                                    textAlign: TextAlign.left,
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: 95,
+                                                  child: Text(
+                                                    companies[index],
+                                                    style: subTitleStyle,
+                                                    textAlign: TextAlign.left,
+                                                  ),
+                                                ),
                                               ]),
                                         ],
                                       )
@@ -312,4 +344,26 @@ final List<String> rolesOrJobs = <String>[
   'The Future of Marketing is Creative',
   'Clinical Research'
 ];
-final List<bool> _selections = List.generate(5, (_) => false);
+final List<String> speakers = <String>[
+  "Chandler Sopko",
+  "Sergio Claudio",
+  "NIL"
+];
+final List<String> dates = <String>["July 27, 2022", "July 11, 2022", "NIL"];
+final List<String> companies = <String>["Figma", "Adobe", "NIL"];
+final List<bool> _selections = List.generate(rolesOrJobs.length, (_) => true);
+
+final List<String> _categories = <String>[
+  'All',
+  'Ongoing',
+  'Upcoming',
+  'Viewed',
+  'Registered',
+  'Attended',
+  'Booked'
+];
+
+final List<List<Color>> _activebgcolors = (List.generate(_categories.length,
+    (_) => List.generate(_categories.length, (_) => Colors.deepPurple)));
+
+final List<double> _customWidhts = List.generate(_categories.length, (_) => 95);
