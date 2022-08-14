@@ -28,7 +28,7 @@ class _HomepageState extends State<Homepage> {
           type: BottomNavigationBarType.fixed,
           currentIndex: _currentIndex,
           unselectedItemColor: Colors.grey,
-          selectedItemColor: Colors.deepPurple,
+          selectedItemColor: Color.fromARGB(255, 108, 99, 254),
           unselectedLabelStyle: const TextStyle(
               fontFamily: 'Roboto', fontWeight: FontWeight.w500, fontSize: 10),
           selectedLabelStyle: const TextStyle(
@@ -43,7 +43,7 @@ class _HomepageState extends State<Homepage> {
               label: 'Events',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.bookmark),
+              icon: Icon(Icons.favorite),
               label: 'Saved',
             ),
             BottomNavigationBarItem(

@@ -64,7 +64,15 @@ class _EventsPageState extends State<EventsPage> {
                                 SizedBox(
                                   height: 135,
                                   child: Stack(children: [
-                                    Container(color: Colors.deepPurple),
+                                    Container(
+                                      foregroundDecoration: BoxDecoration(
+                                          image: DecorationImage(
+                                        image: AssetImage(
+                                          'lib/assets/images/${entries[index]}'
+                                        ),
+                                        fit: BoxFit.fitWidth,
+                                      )),
+                                    ),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Align(
@@ -323,11 +331,15 @@ class _EventsPageState extends State<EventsPage> {
   }
 }
 
-final List<String> entries = <String>['music', 'product', 'research'];
+final List<String> entries = <String>[
+  'image1.png',
+  'image2.jpeg',
+  'image3.jpeg',
+];
 final List<String> pics = <String>[
-  'Universal-logo.png',
-  'paraxel.png',
-  'TCS_Logo.jpg',
+  'image1.png',
+  'image2.jpeg',
+  'image3.jpeg',
 ];
 final List<String> timings = <String>[
   '4:20 - 7:30',
@@ -347,10 +359,10 @@ final List<String> rolesOrJobs = <String>[
 final List<String> speakers = <String>[
   "Chandler Sopko",
   "Sergio Claudio",
-  "NIL"
+  "Arj Sama"
 ];
-final List<String> dates = <String>["July 27, 2022", "July 11, 2022", "NIL"];
-final List<String> companies = <String>["Figma", "Adobe", "NIL"];
+final List<String> dates = <String>["July 27, 2022", "July 11, 2022", "July 27, 2022"];
+final List<String> companies = <String>["Figma", "Adobe", "Apollo"];
 final List<bool> _selections = List.generate(rolesOrJobs.length, (_) => true);
 
 final List<String> _categories = <String>[
