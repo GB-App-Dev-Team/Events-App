@@ -16,21 +16,22 @@ var myAppBar = AppBar(
   bottom: PreferredSize(
     preferredSize: const Size.fromHeight(55.0),
     child: Container(
-        padding: const EdgeInsets.all(2.0),
+      height: 30,
+        padding: const EdgeInsets.all(5.0),
         margin: const EdgeInsets.all(10.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           color: Colors.grey[300],
         ),
         child: Padding(
-          padding: const EdgeInsets.all(4.0),
+          padding: const EdgeInsets.all(0.0),
           child: Material(
             color: Colors.grey[300],
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 const Padding(
-                  padding: EdgeInsets.only(left: 5.0),
+                  padding: EdgeInsets.fromLTRB(5.0,0,0,0),
                   child: Icon(Icons.search, color: Colors.grey),
                 ),
                 Expanded(
@@ -45,7 +46,7 @@ var myAppBar = AppBar(
                             color: Colors.grey,
                             fontSize: 16.0),
                         isDense: true,
-                        contentPadding: EdgeInsets.all(10)),
+                        contentPadding: EdgeInsets.all(0)),
                     onChanged: (value) {},
                   ),
                 ),

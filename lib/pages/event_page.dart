@@ -33,7 +33,7 @@ class _EventsPageState extends State<EventsPage> {
                       customWidths: _customWidhts,
                       activeBgColors: _activebgcolors,
                       activeFgColor: Colors.white,
-                      inactiveBgColor: Colors.white,
+                      inactiveBgColor: Color.fromARGB(251, 251, 251, 251),
                       inactiveFgColor: Colors.black,
                       //initialLabelIndex: 0,
                       //totalSwitches: 5,
@@ -50,9 +50,9 @@ class _EventsPageState extends State<EventsPage> {
             itemBuilder: (context, index) {
               return Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
                   child: Card(
-                      elevation: 9,
+                      elevation: 5,
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(14)),
@@ -68,8 +68,7 @@ class _EventsPageState extends State<EventsPage> {
                                       foregroundDecoration: BoxDecoration(
                                           image: DecorationImage(
                                         image: AssetImage(
-                                          'lib/assets/images/${entries[index]}'
-                                        ),
+                                            'lib/assets/images/${entries[index]}'),
                                         fit: BoxFit.fitWidth,
                                       )),
                                     ),
@@ -120,7 +119,8 @@ class _EventsPageState extends State<EventsPage> {
                                   ]),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.all(14.0),
+                                  padding:
+                                      const EdgeInsets.fromLTRB(14.0, 14, 0, 0),
                                   child: Column(
                                     children: [
                                       Align(
@@ -129,30 +129,50 @@ class _EventsPageState extends State<EventsPage> {
                                             rolesOrJobs[index],
                                             style: titleStyle,
                                           )),
-                                      Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: Text(
-                                          "Star rating",
-                                          style: subTitleStyle,
-                                        ),
-                                        // child: RatingBar.builder(
-                                        //   initialRating: 3.5,
-                                        //   allowHalfRating: true,
-                                        //   itemCount: 5,
-                                        //   itemBuilder: (context, index) {
-                                        //     return Icon(
-                                        //       Icons.star,
-                                        //       color: Colors.amber,
-                                        //     );
-                                        //   },
-                                        //   onRatingUpdate: (value) {},
-                                        // )
+                                      Row(
+                                        children: [
+                                          Text(
+                                            '4.8 ',
+                                            style: TextStyle(
+                                              color: Colors.grey.withOpacity(1),
+                                              fontSize: 12,
+                                            ),
+                                          ),
+                                          Align(
+                                            alignment: Alignment.centerLeft,
+                                            child: RatingBar.builder(
+                                              initialRating: 3,
+                                              minRating: 1,
+                                              direction: Axis.horizontal,
+                                              itemCount: 5,
+                                              itemSize: 15,
+                                              allowHalfRating: true,
+                                              itemPadding: EdgeInsets.symmetric(
+                                                  horizontal: 1.0, vertical: 4),
+                                              itemBuilder: (context, _) => Icon(
+                                                Icons.star,
+                                                color: Colors.amber,
+                                              ),
+                                              onRatingUpdate: (rating) {
+                                                print(rating);
+                                              },
+                                            ),
+                                          ),
+                                          Text(
+                                            ' (50K)',
+                                            style: TextStyle(
+                                              color: Colors.grey.withOpacity(1),
+                                              fontSize: 11,
+                                            ),
+                                          )
+                                        ],
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
-                                            vertical: 7),
+                                          vertical: 7,
+                                        ),
                                         child: Divider(
-                                          color: Colors.grey,
+                                          color: Colors.grey[300],
                                           thickness: 1,
                                         ),
                                       ),
@@ -163,41 +183,65 @@ class _EventsPageState extends State<EventsPage> {
                                                   MainAxisAlignment.start,
                                               children: [
                                                 SizedBox(
-                                                    width: 145,
-                                                    child: Text('Speaker')),
-                                                SizedBox(
                                                     width: 95,
-                                                    child: Text('Date')),
+                                                    child: Text(
+                                                      'Speaker',
+                                                      style: TextStyle(
+                                                          fontSize: 13),
+                                                    )),
                                                 SizedBox(
-                                                    width: 95,
-                                                    child: Text('Company')),
+                                                    width: 100,
+                                                    child: Text(
+                                                      'Date of Event',
+                                                      style: TextStyle(
+                                                          fontSize: 13),
+                                                    )),
+                                                SizedBox(
+                                                    width: 120,
+                                                    child: Text(
+                                                      'Company Name',
+                                                      style: TextStyle(
+                                                          fontSize: 13),
+                                                    )),
                                               ]),
-                                          SizedBox(height: 9),
+                                          SizedBox(height: 7),
                                           Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.start,
                                               children: [
                                                 SizedBox(
-                                                  width: 145,
+                                                  width: 95,
                                                   child: Text(
                                                     speakers[index],
-                                                    style: subTitleStyle,
+                                                    style: TextStyle(
+                                                      color: Colors.grey
+                                                          .withOpacity(1),
+                                                      fontSize: 10,
+                                                    ),
                                                     textAlign: TextAlign.left,
                                                   ),
                                                 ),
                                                 SizedBox(
-                                                  width: 95,
+                                                  width: 100,
                                                   child: Text(
                                                     dates[index],
-                                                    style: subTitleStyle,
+                                                    style: TextStyle(
+                                                      color: Colors.grey
+                                                          .withOpacity(1),
+                                                      fontSize: 10,
+                                                    ),
                                                     textAlign: TextAlign.left,
                                                   ),
                                                 ),
                                                 SizedBox(
-                                                  width: 95,
+                                                  width: 120,
                                                   child: Text(
                                                     companies[index],
-                                                    style: subTitleStyle,
+                                                    style: TextStyle(
+                                                      color: Colors.grey
+                                                          .withOpacity(1),
+                                                      fontSize: 10,
+                                                    ),
                                                     textAlign: TextAlign.left,
                                                   ),
                                                 ),
@@ -361,7 +405,11 @@ final List<String> speakers = <String>[
   "Sergio Claudio",
   "Arj Sama"
 ];
-final List<String> dates = <String>["July 27, 2022", "July 11, 2022", "July 27, 2022"];
+final List<String> dates = <String>[
+  "July 27, 2022",
+  "July 11, 2022",
+  "July 27, 2022"
+];
 final List<String> companies = <String>["Figma", "Adobe", "Apollo"];
 final List<bool> _selections = List.generate(rolesOrJobs.length, (_) => true);
 
